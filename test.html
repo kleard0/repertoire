@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Heure Exacte</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 150px;
+    }
+    button {
+      background-color: blue;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #time {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <button id="bouton">Afficher l'heure exacte</button>
+  <div id="time"></div>
+
+  <script>
+    const bouton = document.getElementById('bouton');
+    const afficheur = document.getElementById('time');
+
+    bouton.addEventListener('click', function() {
+      const date = new Date();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+
+      const timeString = hours + ':' + formatTime(minutes) + ':' + formatTime(seconds);
+      afficheur.textContent = timeString;
+    });
+
+    function formatTime(timeUnit) {
+      return timeUnit < 10 ? '0' + timeUnit : timeUnit;
+    }
+  </script>
+</body>
+</html>
